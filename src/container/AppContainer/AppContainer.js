@@ -16,7 +16,6 @@ class AppContainer extends Component {
       <Frame>
         <AppBar history={props.history} />
         {props.isLoading ? <div>loading...</div> : <div>{props.children}</div>}
-        <div style={{ height: '10000px' }} />
       </Frame>
     );
   }

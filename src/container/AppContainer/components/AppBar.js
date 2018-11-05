@@ -8,6 +8,8 @@ import BackButton from './BackButton';
 
 const StyledAppBar = withStyles(theme => ({
   root: {
+    backgroundColor: theme.palette.primary.main,
+    boxShadow: 'none',
     [theme.breakpoints.up('md')]: {
       position: 'static',
     },
@@ -22,6 +24,7 @@ const styles = theme => ({
     flexGrow: 2,
     textAlign: 'center',
     fontFamily: "'Montserrat', 'sans-serif'",
+    color: theme.palette.primary.contrastText,
   },
   spacer: {
     ...theme.mixins.toolbar,
@@ -33,7 +36,7 @@ const styles = theme => ({
 
 const component = ({ classes, history }) => (
   <div>
-    <StyledAppBar position="fixed" color="default" variant="regular">
+    <StyledAppBar position="fixed">
       <Toolbar>
         <BackButton history={history} />
         <Typography className={classes.label}>bill.io</Typography>
