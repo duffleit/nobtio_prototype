@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadBillGroup } from '../store/actions';
+import { loadBillGroup } from '../../store/actions';
+import Frame from './components/Frame';
+import AppBar from './components/AppBar';
 
 class AppContainer extends Component {
   componentDidMount() {
@@ -10,20 +12,12 @@ class AppContainer extends Component {
 
   render() {
     const props = this.props;
-    const history = this.props.history;
-
-    let currentLocation = this.props.history.location.pathname;
-    const isOnRootLevel = (currentLocation.split('/')[2] || '').length > 0;
-
-    return props.isLoading ? (
-      <div>loading...</div>
-    ) : (
-      <div>
-        <button disabled={!isOnRootLevel} onClick={() => history.goBack()}>
-          GoBack
-        </button>
-        {props.children}
-      </div>
+    return (
+      <Frame>
+        <AppBar history={props.history} />
+        {props.isLoading ? <div>loading...</div> : <div>{props.children}</div>}
+        <div style={{ height: '10000px' }} />
+      </Frame>
     );
   }
 }
