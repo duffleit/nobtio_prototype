@@ -1,6 +1,6 @@
 import { actions } from './actions';
 
-export default (state = {}, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
     case actions.BILLGROUP_LOADED_SUCCESS:
       return {
@@ -8,7 +8,7 @@ export default (state = {}, action) => {
         isLoading: false,
         hasError: false,
         errorMessage: null,
-        result: action.payload,
+        ...action.payload.billGroup,
       };
     case actions.BILLGROUP_LOADED_ERROR:
       return {
@@ -28,4 +28,8 @@ export default (state = {}, action) => {
     default:
       return state;
   }
+};
+
+const initialState = {
+  transactions: [],
 };

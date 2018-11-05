@@ -23,10 +23,9 @@ export const loadingBillGroupStarted = () => ({
 
 export const loadedBillGroupSuccessful = billGroup => ({
   type: actions.BILLGROUP_LOADED_SUCCESS,
-  billGroup,
+  payload: { billGroup },
 });
 
 export const loadedBillGroupWithErrors = error => ({
   type: actions.BILLGROUP_LOADED_ERROR,
-  error,
 });
