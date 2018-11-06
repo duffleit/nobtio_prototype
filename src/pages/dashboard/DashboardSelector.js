@@ -11,7 +11,11 @@ const utils = {
   },
 };
 
-const getBills = state => state.transactions.filter(t => t.type === 'bill');
+export const getTransactions = state => state.transactions;
+
+const getBills = createSelector([getTransactions], transactions =>
+  transactions.filter(t => t.type === 'bill')
+);
 
 export const getPersonsInvolvedInBills = createSelector([getBills], bills => {
   return bills
@@ -22,4 +26,8 @@ export const getPersonsInvolvedInBills = createSelector([getBills], bills => {
 
 export const getTotalAmountOfBills = createSelector([getBills], bills => {
   return bills.map(utils.transaction.sum).reduce(sum, 0);
+});
+
+export const getTransactionsWithTotalAmount = createSelector([getTransactions], transactions => {
+  return transactions.map(t => ({ ...t, totalAmount: utils.transaction.sum(t) }));
 });

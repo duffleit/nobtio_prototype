@@ -17,8 +17,25 @@ export default {
         {
           date: moment(),
           type: 'bill',
+          name: 'Wein',
+          from: [{ name: 'Fred', amount: 15 }],
+          to: [
+            { name: 'Mara', amount: 5 },
+            { name: 'David', amount: 5 },
+            { name: 'Fred', amount: 5 },
+          ],
+        },
+        {
+          date: moment(),
+          type: 'payment',
+          from: [{ name: 'David', amount: 15 }],
+          to: [{ name: 'Mara', amount: 15 }],
+        },
+        {
+          date: moment(),
+          type: 'bill',
           name: 'Billa Fleisch',
-          from: [{ name: 'David', amount: 15 }, { name: 'David', amount: 17.5 }],
+          from: [{ name: 'David', amount: 15 }, { name: 'Mara', amount: 17.5 }],
           to: [
             { name: 'Mara', amount: 10 },
             { name: 'David', amount: 16.25 },
@@ -28,9 +45,9 @@ export default {
         {
           date: moment(),
           type: 'bill',
-          name: 'Bier für Hans',
+          name: 'Bierchen',
           from: [{ name: 'David', amount: 15 }],
-          to: [{ name: 'Hans', amount: 15 }],
+          to: [{ name: 'Hans', amount: 7.5 }, { name: 'David', amount: 7.5 }],
         },
       ],
     }).pipe(delay(1000));

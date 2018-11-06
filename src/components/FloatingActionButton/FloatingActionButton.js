@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core';
 
 export default withStyles(theme => ({
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     zIndex: 1,
     bottom: theme.spacing.unit * 3,
     right: theme.spacing.unit * 3,

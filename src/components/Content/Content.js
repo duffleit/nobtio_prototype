@@ -7,7 +7,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 2,
   },
   innerContainer: {
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.secondary.main,
     borderRadius: theme.shape.borderRadius,
     boxShadow: theme.shadows[5],
   },

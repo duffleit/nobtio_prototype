@@ -7,6 +7,7 @@ const styles = theme => ({
     width: '100%',
     background: theme.palette.primary.main,
     position: 'fixed',
+    overflow: 'scroll',
 
     [theme.breakpoints.up('md')]: {
       background: theme.palette.background.paper,
@@ -15,7 +16,6 @@ const styles = theme => ({
   container: {
     maxWidth: theme.breakpoints.values.md,
     background: theme.palette.primary.main,
-    position: 'relative',
     minHeight: '100%',
 
     [theme.breakpoints.up('md')]: {
@@ -28,7 +28,7 @@ const styles = theme => ({
   },
 });
 const component = ({ classes, children }) => (
-  <div class={classes.root}>
+  <div className={classes.root}>
     <div className={classes.container}>{children}</div>
   </div>
 );
