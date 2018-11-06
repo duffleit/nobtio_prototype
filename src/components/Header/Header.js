@@ -4,7 +4,7 @@ import React from 'react';
 let styles = theme => ({
   container: {
     backgroundColor: theme.palette.primary.main,
-    padding: 24,
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px`,
     textAlign: 'center',
   },
 });

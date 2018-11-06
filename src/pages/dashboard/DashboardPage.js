@@ -6,6 +6,10 @@ import HeaderActionButton from '../../components/Header/HeaderActionButton';
 import { connect } from 'react-redux';
 import { getPersonsInvolvedInBills, getTotalAmountOfBills } from './DashboardSelector';
 import Currency from '../../components/Currency/Currency';
+import Content from '../../components/Content/Content';
+import ContentHeader from '../../components/Content/ContentHeader';
+import ContentRow from '../../components/Content/ContentRow';
+import FloatingActionButton from '../../components/FloatingActionButton/FloatingActionButton';
 
 const dashboard = props => {
   const totalAmount = <Currency amount={props.totalAmount} />;
@@ -20,7 +24,12 @@ const dashboard = props => {
         </HeaderSubtitle>
         <HeaderActionButton>Balances</HeaderActionButton>
       </Header>
-      <div style={{ height: '10000px' }} />
+      <Content>
+        <ContentHeader>Activities</ContentHeader>
+        <ContentRow>Test</ContentRow>
+        <ContentRow>Test2</ContentRow>
+      </Content>
+      <FloatingActionButton />
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import Button from '@material-ui/core/Button/Button';
 import { withStyles } from '@material-ui/core';
 
-export default withStyles({
+export default withStyles(theme => ({
   root: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-    borderRadius: 3,
+    background: theme.palette.highlightBackground,
+    borderRadius: theme.shape.borderRadius,
     border: 0,
-    color: 'white',
-    padding: '10px 30px',
+    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 5}px`,
     marginTop: '1rem',
+    color: theme.palette.secondary.contrastText,
   },
   label: {
     textTransform: 'uppercase',
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightMedium,
   },
-})(Button);
+}))(Button);

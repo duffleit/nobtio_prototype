@@ -7,8 +7,9 @@ let palette = createMuiTheme({
       main: '#3C3298',
     },
     secondary: {
-      main: '#123456',
+      main: '#373F51',
     },
+    highlightBackground: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   },
   breakpoints: {
     values: {
@@ -17,6 +18,9 @@ let palette = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
+  },
+  spacing: {
+    unit: 6,
   },
 });
 
