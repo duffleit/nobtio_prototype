@@ -4,6 +4,14 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^3.4.0",
+    "@types/classnames": "^2.2.6",
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.2",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "@types/react-redux": "^6.0.9",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/redux-logger": "^3.0.6",
     "classnames": "^2.2.6",
     "react": "^16.6.0",
     "react-currency-formatter": "^1.1.0",
@@ -14,15 +22,18 @@
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "rxjs": "^6.3.3"
+    "rxjs": "^6.3.3",
+    "typescript": "^3.1.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "npm run lint && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .js src",
-    "lint:fix": "eslint --ext .js src --fix"
+    "lint": "tslint -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "prettier 'src/**/*.ts' 'src/**/*.tsx' --list-different",
+    "prettier:fix": "prettier 'src/**/*.ts' 'src/**/*.tsx' --write"
   },
   "browserslist": [
     ">0.2%",
@@ -31,8 +42,9 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^1.14.3"
+    "prettier": "^1.14.3",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-react": "^3.6.0"
   }
 }
