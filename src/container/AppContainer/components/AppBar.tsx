@@ -11,7 +11,7 @@ interface Props extends StyledComponentProps {
   history: History;
 }
 
-const component: React.SFC<Props> = ({ classes = {}, history }) => (
+const component: React.SFC<Props> = ({ history, classes = {} }) => (
   <div>
     <StyledAppBar position="fixed">
       <Toolbar>

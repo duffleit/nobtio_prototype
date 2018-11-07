@@ -9,7 +9,7 @@ interface Props extends StyledComponentProps {
   history: History;
 }
 
-const backButton: React.SFC<Props> = ({ classes = {}, history }) => {
+const backButton: React.SFC<Props> = ({ history, classes = {} }) => {
   return canGoBack(history) ? (
     <IconButton className={classes.button} onClick={() => goBack(history)} aria-label="Back">
       <Icon>arrow_back</Icon>

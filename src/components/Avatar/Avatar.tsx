@@ -31,7 +31,7 @@ const component: React.SFC<PropTypes> = ({ name, size = AvatarSize.MEDIUM, class
   );
 };
 
-const styles = () => ({
+const style = () => ({
   s: {
     width: 20,
     height: 18,
@@ -49,4 +49,4 @@ const styles = () => ({
   },
 });
 
-export default withStyles(styles)(component);
+export default withStyles(style)(component);
