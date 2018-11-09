@@ -4,8 +4,9 @@ import moment from 'moment';
 import React from 'react';
 import BillRecord from './BillRecord';
 import PaymentRecord from './PaymentRecord';
-import { Activity } from '../../domain/Activity';
+import { Activity } from '../../models/Activity';
 import { StyleRules } from '@material-ui/core/styles';
+import { CustomTheme } from '../../styles/muitheme';
 
 interface Props extends StyledComponentProps {
   activity: Activity;
@@ -37,7 +38,7 @@ const style = (theme: Theme): StyleRules => ({
     fontSize: '.7rem',
   },
   type: {
-    fontFamily: "'Montserrat', 'sans-serif'",
+    fontFamily: (theme as CustomTheme).custom.highlightFont,
     fontWeight: theme.typography.fontWeightMedium,
   },
   date: {

@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon/Icon';
 import React from 'react';
 import PersonsBadge from '../Badge/PersonsBadge';
 import Currency from '../Currency/Currency';
-import { Activity } from '../../domain/Activity';
+import { Activity } from '../../models/Activity';
 import { StyleRules } from '@material-ui/core/styles';
 import { AvatarSize } from '../Avatar/Avatar';
 

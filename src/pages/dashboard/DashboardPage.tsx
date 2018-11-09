@@ -14,24 +14,31 @@ import {
   getActivities,
   getPersonsInvolvedInBills,
   getTotalAmountOfBills,
+  getBillGroupName,
 } from './DashboardSelector';
-import { State } from '../../store/state';
-import { Activity } from '../../domain/Activity';
+import State from '../../store/state';
+import { Activity } from '../../models/Activity';
+import AppBar from '../../components/AppBar/AppBar';
+import { RouteComponentProps } from 'react-router';
 
 interface StateProps {
+  name: string;
   totalAmount: number;
   numberOfPersons: number;
   activities: Activity[];
 }
 
-const dashboard: React.SFC<StateProps> = props => {
+interface Props extends StateProps, RouteComponentProps {}
+
+const dashboard: React.SFC<Props> = props => {
   const totalAmount = <Currency amount={props.totalAmount} />;
   const personCount = `${props.numberOfPersons} person${props.numberOfPersons !== 1 ? 's' : ''}`;
 
   return (
     <div>
+      <AppBar history={props.history} />
       <Header>
-        <HeaderTitle>Kevin Bauer Geburtstagsparty</HeaderTitle>
+        <HeaderTitle>{props.name}</HeaderTitle>
         <HeaderSubtitle>
           bills of <b>{personCount}</b> add up to <b>{totalAmount}</b>
         </HeaderSubtitle>
@@ -52,6 +59,7 @@ const dashboard: React.SFC<StateProps> = props => {
 
 export default connect(
   (state: State): StateProps => ({
+    name: getBillGroupName(state),
     numberOfPersons: getPersonsInvolvedInBills(state).length,
     totalAmount: getTotalAmountOfBills(state),
     activities: getActivities(state),

@@ -2,8 +2,9 @@ import { StyledComponentProps, Theme, withStyles } from '@material-ui/core';
 import React from 'react';
 import PersonsBadge from '../Badge/PersonsBadge';
 import { StyleRules } from '@material-ui/core/styles';
-import { Activity } from '../../domain/Activity';
+import { Activity } from '../../models/Activity';
 import Currency from '../Currency/Currency';
+import { CustomTheme } from '../../styles/muitheme';
 
 interface Props extends StyledComponentProps {
   bill: Activity;
@@ -47,7 +48,7 @@ const style = (theme: Theme): StyleRules => ({
     flex: 1,
   },
   name: {
-    fontFamily: "'Montserrat', 'sans-serif'",
+    fontFamily: (theme as CustomTheme).custom.highlightFont,
     fontSize: '1rem',
     padding: `${theme.spacing.unit * 1.5}px 0`,
   },

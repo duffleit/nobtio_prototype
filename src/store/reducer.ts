@@ -1,35 +1,32 @@
-import { ActionType, ActionWithPayload } from './actionType';
-import { BillGroup } from '../domain/BillGroup';
-import { State } from './state';
+import { ActionTypes, ActionWithData } from './actions';
+import { BillGroup } from '../models/BillGroup';
+import State, { initialState } from './state';
 import { Action } from 'redux';
+import { LoadingState } from '../models/LoadingState';
+import { ErrorState } from '../models/ErrorState';
 
-const initialState: State = {
-  isLoading: false,
-  hasError: false,
+const reducerDefinitions: {
+  [type: string]: (state: State, action: Action<ActionTypes>) => State;
+} = {
+  [ActionTypes.BILL_GROUP_LOADED_SUCCESS]: (state, action) => ({
+    ...state,
+    loadingState: LoadingState.NO_LOADING,
+    errorState: ErrorState.NO_ERROR,
+    billGroup: (action as ActionWithData<BillGroup>).data,
+  }),
+  [ActionTypes.BILL_GROUP_LOADED_ERROR]: (state, action) => ({
+    ...state,
+    loadingState: LoadingState.NO_LOADING,
+    errorState: (action as ActionWithData<ErrorState>).data,
+  }),
+  [ActionTypes.BILL_GROUP_LOADED_STARTING]: state => ({
+    ...state,
+    loadingState: LoadingState.BILLGROUP_LOADING,
+    errorState: ErrorState.NO_ERROR,
+  }),
 };
 
-export default (state: State = initialState, action: Action<ActionType>) => {
-  switch (action.type) {
-    case ActionType.BILL_GROUP_LOADED_SUCCESS:
-      return {
-        ...state,
-        isLoading: false,
-        hasError: false,
-        billGroup: (action as ActionWithPayload<BillGroup>).payload,
-      };
-    case ActionType.BILL_GROUP_LOADED_ERROR:
-      return {
-        ...state,
-        isLoading: false,
-        hasError: true,
-      };
-    case ActionType.BILL_GROUP_LOADED_STARTING:
-      return {
-        ...state,
-        isLoading: true,
-        hasError: false,
-      };
-    default:
-      return state;
-  }
+export default (state: State = initialState, action: Action<ActionTypes>) => {
+  const reducer = reducerDefinitions[action.type];
+  return reducer ? reducer(state, action) : state;
 };

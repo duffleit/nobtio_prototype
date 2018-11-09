@@ -1,13 +1,24 @@
 import moment from 'moment';
 import { Observable, of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { ActivityType } from '../domain/ActivityType';
-import { BillGroup } from '../domain/BillGroup';
+import { ActivityType } from '../models/ActivityType';
+import { BillGroup } from '../models/BillGroup';
+import { ErrorState } from '../models/ErrorState';
 
 export default {
   load: (billGroupId: string): Observable<BillGroup> => {
-    if (billGroupId === 'error') {
-      return throwError({ message: 'Unable to load nobt.' });
+    if (billGroupId === 'error') return throwError(ErrorState.BILLGROUP_GENERALERROR);
+    if (billGroupId === 'noconnection') return throwError(ErrorState.BILLGROUP_NO_CONNECTION);
+    if (billGroupId === 'notfound') return throwError(ErrorState.BILLGROUP_NOT_FOUND);
+
+    if (billGroupId === 'empty') {
+      return of({
+        id: billGroupId,
+        name: 'Grillen bei David',
+        created: moment(),
+        currency: 'EUR',
+        activities: [],
+      });
     }
 
     const mockedBillGroup: BillGroup = {
@@ -58,6 +69,6 @@ export default {
       ],
     };
 
-    return of(mockedBillGroup).pipe(delay(1000));
+    return of(mockedBillGroup).pipe(delay(2000));
   },
 };

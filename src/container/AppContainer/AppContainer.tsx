@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadBillGroup } from '../../store/actionType';
-import AppBar from './components/AppBar';
+import { loadBillGroup } from '../../store/actions';
 import AppFrame from './components/AppFrame';
-import { State } from '../../store/state';
+import State from '../../store/state';
 import { Dispatch } from 'redux';
 import { RouteComponentProps } from 'react-router';
+import Loader from './components/LoadingPage';
+import Error from './components/ErrorPage';
+import { ErrorState } from '../../models/ErrorState';
+import { LoadingState } from '../../models/LoadingState';
 
 const DEFAULT_CURRENCY = 'USD';
 
 export const CurrencyContext = React.createContext(DEFAULT_CURRENCY);
 
 interface StateProps {
-  isLoading: boolean;
-  hasError: boolean;
   currency: string;
+  loadingState: LoadingState;
+  errorState: ErrorState;
 }
 
 interface DispatchProps {
@@ -33,14 +36,13 @@ class AppContainer extends Component<Props> {
     const props = this.props;
     return (
       <AppFrame>
-        <AppBar history={props.history} />
-        {props.isLoading ? (
-          <div>loading...</div>
-        ) : (
-          <CurrencyContext.Provider value={this.props.currency}>
-            <div>{props.children}</div>
-          </CurrencyContext.Provider>
-        )}
+        <Error errorState={props.errorState} history={props.history}>
+          <Loader loadingState={props.loadingState} history={props.history}>
+            <CurrencyContext.Provider value={props.currency}>
+              {props.children}
+            </CurrencyContext.Provider>
+          </Loader>
+        </Error>
       </AppFrame>
     );
   }
@@ -48,8 +50,8 @@ class AppContainer extends Component<Props> {
 
 export default connect(
   (state: State): StateProps => ({
-    isLoading: state.isLoading,
-    hasError: state.hasError,
+    errorState: state.errorState,
+    loadingState: state.loadingState,
     currency: (state.billGroup || { currency: DEFAULT_CURRENCY }).currency,
   }),
   (dispatch: Dispatch): DispatchProps => ({

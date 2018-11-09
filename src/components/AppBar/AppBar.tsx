@@ -6,16 +6,18 @@ import React from 'react';
 import BackButton from './BackButton';
 import IconButtonPlaceHolder from './IconButtonPlaceHolder';
 import { History } from 'history';
+import { CustomTheme } from '../../styles/muitheme';
 
 interface Props extends StyledComponentProps {
   history: History;
+  noNavigation?: boolean;
 }
 
-const component: React.SFC<Props> = ({ history, classes = {} }) => (
+const component: React.SFC<Props> = ({ history, noNavigation = false, classes = {} }) => (
   <div>
     <StyledAppBar position="fixed">
       <Toolbar>
-        <BackButton history={history} />
+        {noNavigation ? <IconButtonPlaceHolder /> : <BackButton history={history} />}
         <Typography className={classes.label}>bill.io</Typography>
         <IconButtonPlaceHolder />
       </Toolbar>
@@ -41,7 +43,7 @@ const style = (theme: Theme): StyleRules => ({
   label: {
     flexGrow: 2,
     textAlign: 'center',
-    fontFamily: "'Montserrat', 'sans-serif'",
+    fontFamily: (theme as CustomTheme).custom.highlightFont,
     color: theme.palette.primary.contrastText,
   },
   spacer: {

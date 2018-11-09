@@ -8,6 +8,7 @@ const palette: Theme = createMuiTheme({
   },
   custom: {
     highlightBackground: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    highlightFont: "'Montserrat', 'sans-serif'",
   },
   palette: {
     primary: {
@@ -33,6 +34,7 @@ console.log('palette', palette);
 export interface CustomTheme extends Theme {
   custom: {
     highlightBackground: string;
+    highlightFont: string;
   };
 }
 export default palette;

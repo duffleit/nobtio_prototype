@@ -1,7 +1,14 @@
-import { BillGroup } from '../domain/BillGroup';
+import { BillGroup } from '../models/BillGroup';
+import { LoadingState } from '../models/LoadingState';
+import { ErrorState } from '../models/ErrorState';
 
-export interface State {
-  isLoading: boolean;
-  hasError: boolean;
+export default interface State {
+  loadingState: LoadingState;
+  errorState: ErrorState;
   billGroup?: BillGroup;
 }
+
+export const initialState: State = {
+  loadingState: LoadingState.NO_LOADING,
+  errorState: ErrorState.NO_ERROR,
+};

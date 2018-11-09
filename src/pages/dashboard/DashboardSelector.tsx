@@ -1,15 +1,26 @@
 import { createSelector } from 'reselect';
-import { Activity } from '../../domain/Activity';
-import { State } from '../../store/state';
+import { Activity } from '../../models/Activity';
+import State from '../../store/state';
+import { BillGroup } from '../../models/BillGroup';
 
 const sum = (aggregate: number, current: number): number => aggregate + current;
 const flattenArray = (aggregate: any[], current: any[]): any[] => [...aggregate, ...current];
 const isNoDuplicate = (item: any, pos: number, self: any): boolean => self.indexOf(item) === pos;
 
-export const getActivities = (state: State): Activity[] =>
-  (state.billGroup || { activities: [] }).activities;
+export const getBillGroup = (state: State): BillGroup =>
+  state.billGroup || ({ activities: [] } as any);
 
-const getBills = createSelector(
+export const getActivities = createSelector(
+  [getBillGroup],
+  (billGroup: BillGroup) => billGroup.activities
+);
+
+export const getBillGroupName = createSelector(
+  [getBillGroup],
+  (billGroup: BillGroup) => billGroup.name
+);
+
+export const getBills = createSelector(
   [getActivities],
   (activities: Activity[]): Activity[] => {
     return activities.filter(t => t.type === 'bill');
