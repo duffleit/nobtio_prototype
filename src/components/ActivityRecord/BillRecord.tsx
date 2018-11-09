@@ -2,7 +2,7 @@ import { StyledComponentProps, Theme, withStyles } from '@material-ui/core';
 import React from 'react';
 import PersonsBadge from '../Badge/PersonsBadge';
 import { StyleRules } from '@material-ui/core/styles';
-import { Activity } from '../../models/Activity';
+import Activity from '../../models/Activity';
 import Currency from '../Currency/Currency';
 import { CustomTheme } from '../../styles/muitheme';
 

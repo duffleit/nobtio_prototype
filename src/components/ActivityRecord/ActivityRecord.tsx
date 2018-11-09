@@ -4,7 +4,7 @@ import moment from 'moment';
 import React from 'react';
 import BillRecord from './BillRecord';
 import PaymentRecord from './PaymentRecord';
-import { Activity } from '../../models/Activity';
+import Activity from '../../models/Activity';
 import { StyleRules } from '@material-ui/core/styles';
 import { CustomTheme } from '../../styles/muitheme';
 

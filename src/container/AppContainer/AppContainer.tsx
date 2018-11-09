@@ -7,8 +7,8 @@ import { Dispatch } from 'redux';
 import { RouteComponentProps } from 'react-router';
 import Loader from './components/LoadingPage';
 import Error from './components/ErrorPage';
-import { ErrorState } from '../../models/ErrorState';
-import { LoadingState } from '../../models/LoadingState';
+import ErrorState from '../../models/ErrorState';
+import LoadingState from '../../models/LoadingState';
 
 const DEFAULT_CURRENCY = 'USD';
 

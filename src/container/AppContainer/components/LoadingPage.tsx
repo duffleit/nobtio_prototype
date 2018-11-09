@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledComponentProps, Theme, withStyles } from '@material-ui/core';
 import { StyleRules } from '@material-ui/core/styles';
-import { LoadingState } from '../../../models/LoadingState';
+import LoadingState from '../../../models/LoadingState';
 import AppBar from '../../../components/AppBar/AppBar';
 import { History } from 'history';
 

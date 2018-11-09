@@ -3,7 +3,7 @@ import { Button, Icon, StyledComponentProps, Theme, withStyles } from '@material
 import { StyleRules } from '@material-ui/core/styles';
 import { History } from 'history';
 import { CustomTheme } from '../../../styles/muitheme';
-import { ErrorState } from '../../../models/ErrorState';
+import ErrorState from '../../../models/ErrorState';
 import AppBar from '../../../components/AppBar/AppBar';
 
 interface Props extends StyledComponentProps {

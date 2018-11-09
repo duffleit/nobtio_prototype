@@ -1,6 +1,6 @@
-import { BillGroup } from '../models/BillGroup';
-import { LoadingState } from '../models/LoadingState';
-import { ErrorState } from '../models/ErrorState';
+import BillGroup from '../models/BillGroup';
+import LoadingState from '../models/LoadingState';
+import ErrorState from '../models/ErrorState';
 
 export default interface State {
   loadingState: LoadingState;

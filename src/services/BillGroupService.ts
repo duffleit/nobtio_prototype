@@ -1,9 +1,9 @@
 import moment from 'moment';
 import { Observable, of, throwError } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { ActivityType } from '../models/ActivityType';
-import { BillGroup } from '../models/BillGroup';
-import { ErrorState } from '../models/ErrorState';
+import ActivityType from '../models/ActivityType';
+import BillGroup from '../models/BillGroup';
+import ErrorState from '../models/ErrorState';
 
 export default {
   load: (billGroupId: string): Observable<BillGroup> => {

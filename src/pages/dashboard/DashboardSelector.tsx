@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { Activity } from '../../models/Activity';
+import Activity from '../../models/Activity';
 import State from '../../store/state';
-import { BillGroup } from '../../models/BillGroup';
+import BillGroup from '../../models/BillGroup';
 
 const sum = (aggregate: number, current: number): number => aggregate + current;
 const flattenArray = (aggregate: any[], current: any[]): any[] => [...aggregate, ...current];

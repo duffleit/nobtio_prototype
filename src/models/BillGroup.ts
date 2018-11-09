@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
-import { Activity } from './Activity';
+import Activity from './Activity';
 
-export interface BillGroup {
+export default interface BillGroup {
   id: string;
   name: string;
   created: Moment;

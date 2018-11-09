@@ -1,7 +1,7 @@
 import billService from '../services/BillGroupService';
-import { BillGroup } from '../models/BillGroup';
+import BillGroup from '../models/BillGroup';
 import { Dispatch, Action } from 'redux';
-import { ErrorState } from '../models/ErrorState';
+import ErrorState from '../models/ErrorState';
 
 export enum ActionTypes {
   BILL_GROUP_LOADED_SUCCESS = 'BILLGROUP_LOADED_SUCCESS',

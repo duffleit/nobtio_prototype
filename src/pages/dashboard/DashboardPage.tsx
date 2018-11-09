@@ -17,7 +17,7 @@ import {
   getBillGroupName,
 } from './DashboardSelector';
 import State from '../../store/state';
-import { Activity } from '../../models/Activity';
+import Activity from '../../models/Activity';
 import AppBar from '../../components/AppBar/AppBar';
 import { RouteComponentProps } from 'react-router';
 

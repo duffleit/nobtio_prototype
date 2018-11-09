@@ -1,8 +1,8 @@
 import { Moment } from 'moment';
-import { ActivityType } from './ActivityType';
-import { ActivityParticipation } from './ActivityParticipation';
+import ActivityType from './ActivityType';
+import ActivityParticipation from './ActivityParticipation';
 
-export interface Activity {
+export default interface Activity {
   date: Moment;
   name?: string;
   sum: number;

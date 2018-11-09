@@ -1,7 +1,9 @@
-export enum ErrorState {
+enum ErrorState {
   NO_ERROR,
 
   BILLGROUP_NOT_FOUND,
   BILLGROUP_NO_CONNECTION,
   BILLGROUP_GENERALERROR,
 }
+
+export default ErrorState;

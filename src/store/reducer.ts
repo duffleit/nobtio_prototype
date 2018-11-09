@@ -1,9 +1,9 @@
 import { ActionTypes, ActionWithData } from './actions';
-import { BillGroup } from '../models/BillGroup';
+import BillGroup from '../models/BillGroup';
 import State, { initialState } from './state';
 import { Action } from 'redux';
-import { LoadingState } from '../models/LoadingState';
-import { ErrorState } from '../models/ErrorState';
+import LoadingState from '../models/LoadingState';
+import ErrorState from '../models/ErrorState';
 
 const reducerDefinitions: {
   [type: string]: (state: State, action: Action<ActionTypes>) => State;

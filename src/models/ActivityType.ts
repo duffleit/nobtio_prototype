@@ -1,4 +1,6 @@
-export enum ActivityType {
+enum ActivityType {
   Bill = 'bill',
   Payment = 'payment',
 }
+
+export default ActivityType;
