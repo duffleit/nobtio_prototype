@@ -15,17 +15,20 @@ import {
   getPersonsInvolvedInBills,
   getTotalAmountOfBills,
   getBillGroupName,
+  isBillGroupEmpty,
 } from './DashboardSelector';
 import State from '../../store/state';
 import Activity from '../../models/Activity';
 import AppBar from '../../components/AppBar/AppBar';
 import { RouteComponentProps } from 'react-router';
+import NoBillGroupRecords from './components/NoBillGroupRecords';
 
 interface StateProps {
   name: string;
   totalAmount: number;
   numberOfPersons: number;
   activities: Activity[];
+  isBillGroupEmpty: boolean;
 }
 
 interface Props extends StateProps, RouteComponentProps {}
@@ -34,15 +37,22 @@ const dashboard: React.SFC<Props> = props => {
   const totalAmount = <Currency amount={props.totalAmount} />;
   const personCount = `${props.numberOfPersons} person${props.numberOfPersons !== 1 ? 's' : ''}`;
 
+  const noRecordsSoFar = props.isBillGroupEmpty;
+  const recordsExist = !noRecordsSoFar;
+
   return (
     <div>
       <AppBar history={props.history} />
       <Header>
         <HeaderTitle>{props.name}</HeaderTitle>
-        <HeaderSubtitle>
-          bills of <b>{personCount}</b> add up to <b>{totalAmount}</b>
-        </HeaderSubtitle>
-        <HeaderActionButton>Balances</HeaderActionButton>
+        {recordsExist && (
+          <React.Fragment>
+            <HeaderSubtitle>
+              bills of <b>{personCount}</b> add up to <b>{totalAmount}</b>
+            </HeaderSubtitle>
+            <HeaderActionButton>Balances</HeaderActionButton>
+          </React.Fragment>
+        )}
       </Header>
       <Content>
         <ContentHeader>Activities</ContentHeader>
@@ -51,6 +61,7 @@ const dashboard: React.SFC<Props> = props => {
             <ActivityRecord activity={activity} />
           </ContentRow>
         ))}
+        {noRecordsSoFar && <NoBillGroupRecords />}
       </Content>
       <FloatingActionButton />
     </div>
@@ -63,5 +74,6 @@ export default connect(
     numberOfPersons: getPersonsInvolvedInBills(state).length,
     totalAmount: getTotalAmountOfBills(state),
     activities: getActivities(state),
+    isBillGroupEmpty: isBillGroupEmpty(state),
   })
 )(dashboard);

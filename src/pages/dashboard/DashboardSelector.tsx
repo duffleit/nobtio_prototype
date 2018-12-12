@@ -15,6 +15,11 @@ export const getActivities = createSelector(
   (billGroup: BillGroup) => billGroup.activities
 );
 
+export const isBillGroupEmpty = createSelector(
+  [getBillGroup],
+  (billGroup: BillGroup) => billGroup.activities.length === 0
+);
+
 export const getBillGroupName = createSelector(
   [getBillGroup],
   (billGroup: BillGroup) => billGroup.name
