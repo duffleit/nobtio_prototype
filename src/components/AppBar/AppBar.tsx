@@ -18,7 +18,7 @@ const component: React.SFC<Props> = ({ history, noNavigation = false, classes = 
     <StyledAppBar position="fixed">
       <Toolbar>
         {noNavigation ? <IconButtonPlaceHolder /> : <BackButton history={history} />}
-        <Typography className={classes.label}>bill.io</Typography>
+        <Typography className={classes.label}>nobt.io</Typography>
         <IconButtonPlaceHolder />
       </Toolbar>
     </StyledAppBar>
