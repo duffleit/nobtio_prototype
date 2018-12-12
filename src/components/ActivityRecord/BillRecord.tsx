@@ -46,11 +46,15 @@ const style = (theme: Theme): StyleRules => ({
   },
   descriptionCol: {
     flex: 1,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
   name: {
     fontFamily: (theme as CustomTheme).custom.highlightFont,
     fontSize: '1rem',
     padding: `${theme.spacing.unit * 1.5}px 0`,
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
   },
   payment: {
     fontSize: '.7rem',

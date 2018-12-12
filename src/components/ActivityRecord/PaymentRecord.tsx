@@ -49,6 +49,9 @@ const style = (theme: Theme): StyleRules => ({
     flex: 1,
     display: 'flex',
     padding: `${theme.spacing.unit * 2}px 0 ${theme.spacing.unit}px `,
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    marginRight: '.5rem',
   },
   amount: {
     borderRadius: theme.shape.borderRadius,

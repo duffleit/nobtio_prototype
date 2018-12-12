@@ -10,7 +10,11 @@ const content: React.SFC<StyledComponentProps> = ({ children, classes = {} }) =>
 const style = (theme: Theme) => ({
   container: {
     backgroundColor: theme.palette.primary.main,
-    padding: theme.spacing.unit * 2,
+    paddingTop: theme.spacing.unit * 2,
+
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing.unit * 2,
+    },
   },
   innerContainer: {
     backgroundColor: theme.palette.secondary.main,
