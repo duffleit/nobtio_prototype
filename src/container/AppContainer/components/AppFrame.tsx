@@ -11,25 +11,20 @@ const style = (theme: Theme): StyleRules => ({
   root: {
     height: '100%',
     width: '100%',
-    background: theme.palette.primary.main,
     position: 'fixed',
     overflow: 'scroll',
+    background: theme.palette.background.paper,
 
     [theme.breakpoints.up('md')]: {
-      background: theme.palette.background.paper,
+      background: theme.palette.primary.main,
     },
   },
   container: {
     maxWidth: theme.breakpoints.values.md,
-    background: theme.palette.primary.main,
-    minHeight: '100%',
 
     [theme.breakpoints.up('md')]: {
       margin: '40px auto',
-      boxShadow: theme.shadows[6],
-      borderRadius: theme.shape.borderRadius,
       overflow: 'hidden',
-      minHeight: '70%',
     },
   },
 });

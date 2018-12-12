@@ -19,7 +19,6 @@ const style = (theme: Theme) => ({
   innerContainer: {
     backgroundColor: theme.palette.secondary.main,
     borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[5],
   },
 });
 
