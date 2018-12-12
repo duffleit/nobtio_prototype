@@ -4,7 +4,6 @@ import Content from '../../components/Content/Content';
 import ContentHeader from '../../components/Content/ContentHeader';
 import ContentRow from '../../components/Content/ContentRow';
 import Currency from '../../components/Currency/Currency';
-import FloatingActionButton from '../../components/FloatingActionButton/FloatingActionButton';
 import Header from '../../components/Header/Header';
 import HeaderActionButton from '../../components/Header/HeaderActionButton';
 import HeaderSubtitle from '../../components/Header/HeaderSubtitle';
@@ -63,7 +62,6 @@ const dashboard: React.SFC<Props> = props => {
         ))}
         {noRecordsSoFar && <NoBillGroupRecords />}
       </Content>
-      <FloatingActionButton />
     </div>
   );
 };
