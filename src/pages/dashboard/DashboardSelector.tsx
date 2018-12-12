@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import Activity from '../../models/Activity';
 import State from '../../store/state';
 import BillGroup from '../../models/BillGroup';
+import ActivityType from '../../models/ActivityType';
 
 const sum = (aggregate: number, current: number): number => aggregate + current;
 const flattenArray = (aggregate: any[], current: any[]): any[] => [...aggregate, ...current];
@@ -28,7 +29,7 @@ export const getBillGroupName = createSelector(
 export const getBills = createSelector(
   [getActivities],
   (activities: Activity[]): Activity[] => {
-    return activities.filter(t => t.type === 'bill');
+    return activities.filter(t => t.type === ActivityType.Bill);
   }
 );
 

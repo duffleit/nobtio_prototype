@@ -7,6 +7,8 @@ import PaymentRecord from './PaymentRecord';
 import Activity from '../../models/Activity';
 import { StyleRules } from '@material-ui/core/styles';
 import { CustomTheme } from '../../styles/muitheme';
+import LoggerService from '../../services/LoggerService';
+import ActivityType from '../../models/ActivityType';
 
 interface Props extends StyledComponentProps {
   activity: Activity;
@@ -22,12 +24,15 @@ const activityRecord: React.SFC<Props> = ({ activity, classes = {} }) => (
 
     {(() => {
       switch (activity.type) {
-        case 'bill':
+        case ActivityType.Bill:
           return <BillRecord bill={activity} />;
-        case 'payment':
+        case ActivityType.Payment:
           return <PaymentRecord payment={activity} />;
         default:
-          return <div>error</div>;
+          LoggerService.log({
+            message: `ActivityType ${activity.type} is not known, and ignored`,
+            activity,
+          });
       }
     })()}
   </div>
