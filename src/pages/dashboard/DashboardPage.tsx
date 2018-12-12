@@ -56,7 +56,7 @@ const dashboard: React.SFC<Props> = props => {
       <Content>
         <ContentHeader>Activities</ContentHeader>
         {props.activities.map(activity => (
-          <ContentRow>
+          <ContentRow key={activity.identifier}>
             <ActivityRecord activity={activity} />
           </ContentRow>
         ))}

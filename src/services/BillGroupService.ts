@@ -28,6 +28,7 @@ export default {
       currency: 'EUR',
       activities: [
         {
+          identifier: '4',
           date: moment(),
           sum: 15,
           type: ActivityType.Bill,
@@ -40,6 +41,7 @@ export default {
           ],
         },
         {
+          identifier: '3',
           date: moment(),
           type: ActivityType.Payment,
           sum: 15,
@@ -47,6 +49,7 @@ export default {
           to: [{ name: 'Mara', amount: 15 }],
         },
         {
+          identifier: '2',
           date: moment(),
           type: ActivityType.Bill,
           name: 'Grillfleisch Billa',
@@ -59,6 +62,7 @@ export default {
           ],
         },
         {
+          identifier: '1',
           date: moment(),
           type: ActivityType.Bill,
           name: 'Bierchen',
